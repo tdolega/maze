@@ -4,8 +4,6 @@ function Spot(x, y) {
     this.y = y;
     this.s = undefined;
 
-    this.wall = true;
-
     // stats
     this.f = 0;
     this.g = 0;
@@ -13,15 +11,18 @@ function Spot(x, y) {
 
     this.neighbors = {};
     this.eneighbors = {};
-    this.previous = undefined;
+    this.previous = undefined
+
+    // randomly make wall
+    this.wall = true;
 
     // display itself
     this.show = function (color) {
         noStroke();
         fill(this.wall ? 0 : color);
         var squareSize = canvasSize / gridSize;
-        rect(this.x * squareSize, this.y * squareSize, squareSize, squareSize);
-    };
+        rect(this.x * squareSize, this.y * squareSize, squareSize, squareSize)
+    }
 
     // figure out my neighbors
     this.addNeighbors = function (grid) {
@@ -37,7 +38,7 @@ function Spot(x, y) {
         if (this.y > 0) {
             this.neighbors.top = grid[this.x][this.y - 1];
         }
-    };
+    }
 
     // e
     this.addeNeighbors = function (grid) {
@@ -53,5 +54,5 @@ function Spot(x, y) {
         if (this.y > 1) {
             this.eneighbors.top = grid[this.x][this.y - 2];
         }
-    };
+    }
 }
